@@ -7,17 +7,20 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
-import { calendar, home, notifications, person } from "ionicons/icons";
+import { calendar, home, notifications, person, ribbon } from "ionicons/icons";
 import SplashScreen from "../pages/00-SplashScreen/SplashScreen";
 import GetStarted from "../pages/01-GetStarted/GetStarted";
 import Login from "../pages/02-Login/Login";
 import Home from "../pages/04-Home/Home";
+import Events from "../pages/05-Events/Events";
+import Alerts from "../pages/06-Alerts/Alerts";
+import Profile from "../pages/07-Profile/Profile";
+import Alumni from "../pages/08-Alumni/Alumni";
 
 const MainRoutes: React.FC = () => {
   const location = useLocation();
 
-  // define the routes where tab bar should be visible
-  const tabRoutes = ["/home", "/events", "/alerts", "/profile"];
+  const tabRoutes = ["/home", "/events", "/alumni", "/alerts", "/profile"];
   const shouldShowTabs = tabRoutes.includes(location.pathname);
 
   return (
@@ -27,15 +30,10 @@ const MainRoutes: React.FC = () => {
         <Route exact path="/getStarted" component={GetStarted} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/events">
-          <div>Events Page</div>
-        </Route>
-        <Route exact path="/alerts">
-          <div>Alerts Page</div>
-        </Route>
-        <Route exact path="/profile">
-          <div>Profile Page</div>
-        </Route>
+        <Route exact path="/events" component={Events} />
+        <Route exact path="/alerts" component={Alerts} />
+        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/alumni" component={Alumni} />
 
         <Route exact path="/">
           <Redirect to="/splashScreen" />
@@ -51,6 +49,10 @@ const MainRoutes: React.FC = () => {
           <IonTabButton tab="events" href="/events">
             <IonIcon aria-hidden="true" icon={calendar} />
             <IonLabel>Events</IonLabel>
+          </IonTabButton>
+          <IonTabButton tab="alumni" href="/alumni">
+            <IonIcon aria-hidden="true" icon={ribbon} />
+            <IonLabel>Alumni</IonLabel>
           </IonTabButton>
           <IonTabButton tab="alerts" href="/alerts">
             <IonIcon aria-hidden="true" icon={notifications} />

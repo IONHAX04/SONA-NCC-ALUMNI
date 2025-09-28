@@ -1,4 +1,5 @@
 import {
+  IonBackButton,
   IonButtons,
   IonContent,
   IonHeader,
@@ -8,17 +9,15 @@ import {
 } from "@ionic/react";
 import React from "react";
 
-const Home: React.FC = () => {
+const Profile: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Home</IonTitle>
-          <IonButtons slot="end">
-            <div className="p-6 flex items-center justify-center">
-              {/* <IonIcon icon={search} style={{ fontSize: "18px" }} /> */}
-            </div>
+          <IonButtons slot="start">
+            <IonBackButton defaultHref="/home" mode="md" />
           </IonButtons>
+          <IonTitle>Profile</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent></IonContent>
@@ -26,4 +25,4 @@ const Home: React.FC = () => {
   );
 };
 
-export default Home;
+export default Profile;
