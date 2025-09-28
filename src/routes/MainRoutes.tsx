@@ -1,4 +1,4 @@
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, useLocation } from "react-router-dom";
 import {
   IonIcon,
   IonLabel,
@@ -14,26 +14,35 @@ import Login from "../pages/02-Login/Login";
 import Home from "../pages/04-Home/Home";
 
 const MainRoutes: React.FC = () => {
+  const location = useLocation();
+
+  // define the routes where tab bar should be visible
+  const tabRoutes = ["/home", "/events", "/alerts", "/profile"];
+  const shouldShowTabs = tabRoutes.includes(location.pathname);
+
   return (
-    <div>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route exact path="/splashScreen">
-            <SplashScreen />
-          </Route>
-          <Route exact path="/getStarted">
-            <GetStarted />
-          </Route>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/home">
-            <Home />
-          </Route>
-          <Route exact path="/">
-            <Redirect to="/home" />
-          </Route>
-        </IonRouterOutlet>
+    <IonTabs>
+      <IonRouterOutlet>
+        <Route exact path="/splashScreen" component={SplashScreen} />
+        <Route exact path="/getStarted" component={GetStarted} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/home" component={Home} />
+        <Route exact path="/events">
+          <div>Events Page</div>
+        </Route>
+        <Route exact path="/alerts">
+          <div>Alerts Page</div>
+        </Route>
+        <Route exact path="/profile">
+          <div>Profile Page</div>
+        </Route>
+
+        <Route exact path="/">
+          <Redirect to="/splashScreen" />
+        </Route>
+      </IonRouterOutlet>
+
+      {shouldShowTabs && (
         <IonTabBar slot="bottom">
           <IonTabButton tab="home" href="/home">
             <IonIcon aria-hidden="true" icon={home} />
@@ -52,8 +61,8 @@ const MainRoutes: React.FC = () => {
             <IonLabel>Profile</IonLabel>
           </IonTabButton>
         </IonTabBar>
-      </IonTabs>
-    </div>
+      )}
+    </IonTabs>
   );
 };
 

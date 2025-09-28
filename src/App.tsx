@@ -32,7 +32,9 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import MainRoutes from "./routes/MainRoutes";
 
-setupIonicReact();
+setupIonicReact({
+  mode: "ios",
+});
 
 const App: React.FC = () => (
   <IonApp>
