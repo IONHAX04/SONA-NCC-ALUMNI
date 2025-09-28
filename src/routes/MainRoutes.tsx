@@ -16,6 +16,7 @@ import Events from "../pages/05-Events/Events";
 import Alerts from "../pages/06-Alerts/Alerts";
 import Profile from "../pages/07-Profile/Profile";
 import Alumni from "../pages/08-Alumni/Alumni";
+import BatchDetails from "../pages/03-BatchDetails/BatchDetails";
 
 const MainRoutes: React.FC = () => {
   const location = useLocation();
@@ -34,6 +35,7 @@ const MainRoutes: React.FC = () => {
         <Route exact path="/alerts" component={Alerts} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/alumni" component={Alumni} />
+        <Route exact path="/batchDetails" component={BatchDetails} />
 
         <Route exact path="/">
           <Redirect to="/splashScreen" />

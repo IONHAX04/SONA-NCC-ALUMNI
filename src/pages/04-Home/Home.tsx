@@ -3,6 +3,7 @@ import {
   IonContent,
   IonHeader,
   IonPage,
+  IonSearchbar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
@@ -19,6 +20,9 @@ const Home: React.FC = () => {
               {/* <IonIcon icon={search} style={{ fontSize: "18px" }} /> */}
             </div>
           </IonButtons>
+        </IonToolbar>
+        <IonToolbar>
+          <IonSearchbar></IonSearchbar>
         </IonToolbar>
       </IonHeader>
       <IonContent></IonContent>

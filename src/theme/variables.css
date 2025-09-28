@@ -1,1 +1,18 @@
 @import "tailwindcss";
+
+.toolbar-container .toolbar-content {
+  justify-content: center !important;
+}
+
+.select-popover.ios.select-popover.ios.popover-side-bottom {
+  display: none;
+}
+
+ion-select::part(text) {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+ion-select::part(container) {
+  justify-content: flex-end;
+}
