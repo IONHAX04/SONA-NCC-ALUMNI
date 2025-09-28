@@ -22,18 +22,17 @@ const Events: React.FC = () => {
           </IonButtons>
           <IonTitle>Events</IonTitle>
         </IonToolbar>
-        <IonToolbar>
-          <IonSegment value="achievements">
-            <IonSegmentButton value="achievements">
-              <IonLabel>Achievements</IonLabel>
-            </IonSegmentButton>
-            <IonSegmentButton value="events">
-              <IonLabel>Events</IonLabel>
-            </IonSegmentButton>
-          </IonSegment>
-        </IonToolbar>
       </IonHeader>
-      <IonContent></IonContent>
+      <IonContent>
+        <IonSegment value="achievements">
+          <IonSegmentButton value="achievements">
+            <IonLabel>Achievements</IonLabel>
+          </IonSegmentButton>
+          <IonSegmentButton value="events">
+            <IonLabel>Events</IonLabel>
+          </IonSegmentButton>
+        </IonSegment>
+      </IonContent>
     </IonPage>
   );
 };

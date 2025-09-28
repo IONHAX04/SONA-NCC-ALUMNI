@@ -24,7 +24,9 @@ const BatchDetails: React.FC = () => {
   const [presentingElement, setPresentingElement] =
     useState<HTMLElement | null>(null);
 
-  const [selectedYear, setSelectedYear] = useState<number | null>(null);
+  const [selectedYearRange, setSelectedYearRange] = useState<string | null>(
+    null
+  );
   const [selectedUnit, setSelectedUnit] = useState<string | null>(null);
   const [selectedRank, setSelectedRank] = useState<string | null>(null);
 
@@ -41,7 +43,12 @@ const BatchDetails: React.FC = () => {
     setModalType(null);
   }
 
-  const years = Array.from({ length: 21 }, (_, i) => 2010 + i);
+  // Generate year ranges: 2010-2013 up to 2026-2029
+  const years = Array.from({ length: 17 }, (_, i) => {
+    const start = 2010 + i;
+    const end = start + 3;
+    return `${start} - ${end}`;
+  });
 
   const units = ["11 TN SIG COY", "12 TN BN NCC"];
 
@@ -74,9 +81,9 @@ const BatchDetails: React.FC = () => {
       <IonContent>
         {/* Year */}
         <IonItem lines="full" button onClick={() => openModal("year")}>
-          <IonLabel>Year of Passing</IonLabel>
+          <IonLabel>Year</IonLabel>
           <p slot="end" className="text-[#1173d4]">
-            {selectedYear ?? "Select Year"}
+            {selectedYearRange ?? "Select Year Range"}
           </p>
         </IonItem>
 
@@ -98,30 +105,30 @@ const BatchDetails: React.FC = () => {
 
         {/* Inputs */}
         <div className="p-4 space-y-4">
+          {" "}
           <input
             type="text"
             placeholder="Name"
             className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none"
-          />
+          />{" "}
           <input
             type="text"
             style={{ marginTop: "8px" }}
             placeholder="Mobile"
             className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none"
-          />
+          />{" "}
           <input
             type="text"
             style={{ marginTop: "8px" }}
             placeholder="Email"
             className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none"
-          />
+          />{" "}
           <input
             type="text"
             style={{ marginTop: "8px" }}
             placeholder="Designation"
             className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none"
-          />
-
+          />{" "}
           <button
             onClick={() => history.push("/home")}
             className="w-full bg-[#1173d4] mt-4 rounded-lg text-white uppercase font-bold py-3"
@@ -131,8 +138,9 @@ const BatchDetails: React.FC = () => {
               textTransform: "uppercase",
             }}
           >
-            Login
-          </button>
+            {" "}
+            Submit{" "}
+          </button>{" "}
         </div>
 
         {/* Shared Modal */}
@@ -141,7 +149,7 @@ const BatchDetails: React.FC = () => {
             <IonToolbar>
               <IonTitle>
                 {modalType === "year"
-                  ? "Select Year"
+                  ? "Select Year Range"
                   : modalType === "unit"
                   ? "Select Unit"
                   : "Select Rank"}
@@ -154,16 +162,16 @@ const BatchDetails: React.FC = () => {
           <IonContent>
             <IonList>
               {modalType === "year" &&
-                years.map((year) => (
+                years.map((range) => (
                   <IonItem
-                    key={year}
+                    key={range}
                     button
                     onClick={() => {
-                      setSelectedYear(year);
+                      setSelectedYearRange(range);
                       dismiss();
                     }}
                   >
-                    <IonLabel>{year}</IonLabel>
+                    <IonLabel>{range}</IonLabel>
                   </IonItem>
                 ))}
               {modalType === "unit" &&

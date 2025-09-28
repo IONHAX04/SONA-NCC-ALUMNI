@@ -16,3 +16,7 @@ ion-select::part(text) {
 ion-select::part(container) {
   justify-content: flex-end;
 }
+
+ion-segment-button {
+  padding: 7px;
+}

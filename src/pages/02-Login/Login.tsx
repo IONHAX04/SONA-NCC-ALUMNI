@@ -36,7 +36,7 @@ const Login: React.FC = () => {
             type="email"
             placeholder="Email"
             style={{ marginBottom: "15px" }}
-            className="mb-4 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none focus:border-gray-300"
+            className="mb-4 w-full rounded-lg border border-[#c6c6c6] bg-white px-4 py-3 text-sm focus:outline-none focus:border-gray-300"
           />
 
           {/* Password Input */}
@@ -44,7 +44,7 @@ const Login: React.FC = () => {
             type="password"
             placeholder="Password"
             style={{ marginBottom: "20px" }}
-            className="mb-2 w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none focus:border-gray-300"
+            className="mb-2 w-full rounded-lg border border-[#c6c6c6] bg-white px-4 py-3 text-sm focus:outline-none focus:border-gray-300"
           />
 
           {/* Forgot Password */}
