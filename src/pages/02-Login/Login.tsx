@@ -56,7 +56,7 @@ const Login: React.FC = () => {
 
           {/* Login Button */}
           <button
-            onClick={() => history.push("/home")}
+            onClick={() => history.push("/batchDetails")}
             className="w-full bg-[#1173d4] rounded-lg text-white uppercase font-bold"
             style={{
               padding: "15px",

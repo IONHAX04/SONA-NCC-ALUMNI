@@ -10,9 +10,14 @@ import {
   IonSegment,
   IonSegmentButton,
 } from "@ionic/react";
-import React from "react";
+import React, { useState } from "react";
+
+import Achievements from "../../components/EventsComponents/Achievements";
+import EventComponents from "../../components/EventsComponents/EventComponents";
 
 const Events: React.FC = () => {
+  const [activeSegment, setActiveSegment] = useState<string>("achievements");
+
   return (
     <IonPage>
       <IonHeader>
@@ -23,8 +28,14 @@ const Events: React.FC = () => {
           <IonTitle>Events</IonTitle>
         </IonToolbar>
       </IonHeader>
+
       <IonContent>
-        <IonSegment value="achievements">
+        <IonSegment
+          value={activeSegment}
+          onIonChange={(e: any) => {
+            setActiveSegment(e.detail.value!);
+          }}
+        >
           <IonSegmentButton value="achievements">
             <IonLabel>Achievements</IonLabel>
           </IonSegmentButton>
@@ -32,6 +43,9 @@ const Events: React.FC = () => {
             <IonLabel>Events</IonLabel>
           </IonSegmentButton>
         </IonSegment>
+
+        {activeSegment === "achievements" && <Achievements />}
+        {activeSegment === "events" && <EventComponents />}
       </IonContent>
     </IonPage>
   );

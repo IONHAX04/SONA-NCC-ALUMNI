@@ -1,7 +1,7 @@
 import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: "io.ionic.starter",
+  appId: "io.sona.ncc",
   appName: "ncc-alumni",
   webDir: "dist",
   plugins: {
