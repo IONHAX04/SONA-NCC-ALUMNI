@@ -1,18 +1,13 @@
-import { IonContent, IonPage } from "@ionic/react";
+import { IonPage, IonContent } from "@ionic/react";
 import React from "react";
-import logoImgBatch from "../../assets/logo/logo.jpg";
 import { useHistory } from "react-router";
 
-const Login: React.FC = () => {
+const SignUp: React.FC = () => {
   const history = useHistory();
+
   return (
     <IonPage>
-      {/* <IonHeader>
-        <IonToolbar>
-          <IonTitle>SONA NCC</IonTitle>
-        </IonToolbar>
-      </IonHeader> */}
-      <IonContent fullscreen>
+      <IonContent>
         <div className="flex flex-col h-[100%] pt-10 pb-10 items-center justify-center px-6 overflow-auto">
           {/* Title */}
           <div className="mb-3 text-center">
@@ -21,8 +16,6 @@ const Login: React.FC = () => {
               Join our community of cadets, alumni and officers
             </p>
           </div>
-
-          <img src={logoImgBatch} className="w-[30%] pb-3" alt="" />
 
           {/* Email Input */}
           <input
@@ -81,21 +74,15 @@ const Login: React.FC = () => {
             Don't have an account?{" "}
             <button
               className="text-[#1173d4] font-semibold underline"
-              onClick={() => history.push("/signUp")}
+              onClick={() => history.goBack()}
             >
               Sign up
             </button>
           </p>
         </div>
       </IonContent>
-
-      {/* <IonFooter className="">
-        <IonToolbar>
-          <IonTitle>© {new Date().getFullYear()} Sona NCC</IonTitle>
-        </IonToolbar>
-      </IonFooter> */}
     </IonPage>
   );
 };
 
-export default Login;
+export default SignUp;

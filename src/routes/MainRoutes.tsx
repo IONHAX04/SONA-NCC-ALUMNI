@@ -18,6 +18,7 @@ import Profile from "../pages/07-Profile/Profile";
 import Alumni from "../pages/08-Alumni/Alumni";
 import BatchDetails from "../pages/03-BatchDetails/BatchDetails";
 import AlumniBatchDetails from "../components/AlumniComponents/AlumniBatchDetails";
+import SignUp from "../pages/02-Login/SignUp";
 
 const MainRoutes: React.FC = () => {
   const location = useLocation();
@@ -36,6 +37,7 @@ const MainRoutes: React.FC = () => {
         <Route exact path="/alerts" component={Alerts} />
         <Route exact path="/profile" component={Profile} />
         <Route exact path="/alumni" component={Alumni} />
+        <Route exact path="/signUp" component={SignUp} />
         <Route exact path="/batchDetails" component={BatchDetails} />
         <Route
           exact

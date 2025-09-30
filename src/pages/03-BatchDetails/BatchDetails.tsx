@@ -126,6 +126,12 @@ const BatchDetails: React.FC = () => {
           <input
             type="text"
             style={{ marginTop: "8px" }}
+            placeholder="Company Name"
+            className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none"
+          />{" "}
+          <input
+            type="text"
+            style={{ marginTop: "8px" }}
             placeholder="Designation"
             className="w-full rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm focus:outline-none"
           />{" "}
@@ -139,7 +145,7 @@ const BatchDetails: React.FC = () => {
             }}
           >
             {" "}
-            Submit{" "}
+            Next{" "}
           </button>{" "}
         </div>
 
