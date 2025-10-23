@@ -2,32 +2,65 @@ import { IonContent, IonPage } from "@ionic/react";
 import React, { useEffect } from "react";
 import logoImgBatch from "../../assets/logo/logo.jpg";
 import { useHistory } from "react-router";
-import { signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithCredential,
+  signInWithPopup,
+} from "firebase/auth";
 import { auth, googleProvider } from "../../utils/firebase/firebaseConfig";
 import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
+import { isPlatform } from "@ionic/react";
 
 const Login: React.FC = () => {
   const history = useHistory();
 
   const handleGoogleLogin = async () => {
     try {
-      const result = await signInWithPopup(auth, googleProvider);
-      // User info
-      const user = result.user;
-      console.log("User Info:", user);
-      alert(`Welcome ${user.displayName}`);
-      // You can store user data in state or context here
+      if (isPlatform("capacitor")) {
+        // ✅ Native (Android or iOS)
+        const googleUser = await GoogleAuth.signIn();
+
+        if (!googleUser) {
+          throw new Error("Google Sign-In cancelled");
+        }
+
+        // Use idToken from native login to sign in with Firebase
+        const credential = GoogleAuthProvider.credential(
+          googleUser.authentication.idToken
+        );
+        const result = await signInWithCredential(auth, credential);
+
+        console.log("Native Login Success:", result.user);
+        alert(`Welcome ${result.user.displayName}`);
+        history.push("/batchDetails");
+      } else {
+        // ✅ Web browser
+        const result = await signInWithPopup(auth, googleProvider);
+        const user = result.user;
+        console.log("Web Login Success:", user);
+        alert(`Welcome ${user.displayName}`);
+        history.push("/batchDetails");
+      }
     } catch (error: any) {
       console.error("Google login error:", error);
-      alert(error.message);
+      alert(error.message || "Login failed");
     }
   };
+
   useEffect(() => {
-    GoogleAuth.initialize({
-      clientId: "200940096109-9uohionbpe71drvpuifpor0va0tpmr1i.apps.googleusercontent.com",
-      scopes: ["profile", "email"],
-      grantOfflineAccess: true,
-    });
+    if (isPlatform("capacitor")) {
+      GoogleAuth.initialize({
+        clientId:
+          "200940096109-9uohionbpe71drvpuifpor0va0tpmr1i.apps.googleusercontent.com",
+        scopes: ["profile", "email"],
+        grantOfflineAccess: true,
+      });
+    }
+
+    console.log(
+      "Platform detected:",
+      isPlatform("android") ? "Android" : isPlatform("ios") ? "iOS" : "Web"
+    );
   }, []);
   return (
     <IonPage>
