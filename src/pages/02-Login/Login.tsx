@@ -2,9 +2,25 @@ import { IonContent, IonPage } from "@ionic/react";
 import React from "react";
 import logoImgBatch from "../../assets/logo/logo.jpg";
 import { useHistory } from "react-router";
+import { signInWithPopup } from "firebase/auth";
+import { auth, googleProvider } from "../../utils/firebase/firebaseConfig";
 
 const Login: React.FC = () => {
   const history = useHistory();
+
+  const handleGoogleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, googleProvider);
+      // User info
+      const user = result.user;
+      console.log("User Info:", user);
+      alert(`Welcome ${user.displayName}`);
+      // You can store user data in state or context here
+    } catch (error: any) {
+      console.error("Google login error:", error);
+      alert(error.message);
+    }
+  };
   return (
     <IonPage>
       {/* <IonHeader>
@@ -67,7 +83,10 @@ const Login: React.FC = () => {
             <div className="h-px flex-1 bg-gray-300"></div>
           </div>
 
-          <button className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700">
+          <button
+            className="flex w-full items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-700"
+            onClick={handleGoogleLogin}
+          >
             <img
               src="https://www.svgrepo.com/show/355037/google.svg"
               alt="Google"
