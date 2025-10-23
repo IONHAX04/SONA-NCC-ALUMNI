@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "733594728397",
+    "project_id": "ncc-alumni",
+    "storage_bucket": "ncc-alumni.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:733594728397:android:6f076df3bfb75221d8f684",
+        "android_client_info": {
+          "package_name": "io.sona.ncc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "733594728397-3nrq67lik6ebjv25ceanis2219psgu76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDe--vb0dpL7YMGiwqxxBCC47uIVpB1K4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "733594728397-3nrq67lik6ebjv25ceanis2219psgu76.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

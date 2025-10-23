@@ -1,9 +1,10 @@
 import { IonContent, IonPage } from "@ionic/react";
-import React from "react";
+import React, { useEffect } from "react";
 import logoImgBatch from "../../assets/logo/logo.jpg";
 import { useHistory } from "react-router";
 import { signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../utils/firebase/firebaseConfig";
+import { GoogleAuth } from "@codetrix-studio/capacitor-google-auth";
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -21,6 +22,13 @@ const Login: React.FC = () => {
       alert(error.message);
     }
   };
+  useEffect(() => {
+    GoogleAuth.initialize({
+      clientId: "200940096109-9uohionbpe71drvpuifpor0va0tpmr1i.apps.googleusercontent.com",
+      scopes: ["profile", "email"],
+      grantOfflineAccess: true,
+    });
+  }, []);
   return (
     <IonPage>
       {/* <IonHeader>
